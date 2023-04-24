@@ -1,15 +1,10 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        result = []
-        sumDict = {}
+        numDict = {}
         
         for i in range(len(nums)):
-            sumDict[nums[i]] = i
-
-        for i in range(len(nums)):
-            if (sumDict.get(target - nums[i]) is not None) and (sumDict[target-nums[i]] is not i):
-                result.append(i)
-                result.append(sumDict[target-nums[i]])
-                break
-
-        return result
+            if (target - nums[i]) in numDict.keys():
+                return [i, numDict[(target - nums[i])]]
+            numDict[nums[i]] = i
+        
+        return [-1, -1]
