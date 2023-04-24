@@ -1,6 +1,17 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
+        newStr = ""
+        
+        for c in s:
+            if c.isalnum():
+                newStr += c.lower()
+        
+        return newStr == newStr[::-1]
+        
+        
+        
         """single pass"""
+        """
         length = len(s)
         i = 0
         j = length - 1
@@ -19,5 +30,4 @@ class Solution:
                 j -= 1
                 
         return True
-        
-        
+        """
