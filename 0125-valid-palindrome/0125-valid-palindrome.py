@@ -5,7 +5,7 @@ class Solution:
         i = 0
         j = len(s) - 1
         
-        while (i<j and i<len(s) and j>=0) :
+        while (i<j) :
             if not s[i].isalnum():
                 i += 1
                 continue
