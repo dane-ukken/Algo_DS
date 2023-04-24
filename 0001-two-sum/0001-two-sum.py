@@ -3,7 +3,7 @@ class Solution:
         numDict = {}
         
         for i in range(len(nums)):
-            if (target - nums[i]) in numDict.keys():
+            if (target - nums[i]) in numDict:
                 return [i, numDict[(target - nums[i])]]
             numDict[nums[i]] = i
         
