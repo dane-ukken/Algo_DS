@@ -2,23 +2,26 @@ class Solution:
     def isPalindrome(self, s: str) -> bool:
         
         
-        i = 0
-        j = len(s) - 1
+        i, j = 0, len(s) - 1
         
         while (i<j) :
-            if not s[i].isalnum():
+            if not self.isAlphaNum(s[i]):
                 i += 1
                 continue
-            if not s[j].isalnum():
+            if not self.isAlphaNum(s[j]):
                 j -= 1
                 continue
             if s[i].lower()!=s[j].lower():
                 return False
-            else:
-                i += 1
-                j -= 1
+            i += 1
+            j -= 1
                 
         return True
+
+    def isAlphaNum(self, c) -> bool:
+        return (ord('A') <= ord(c) <= ord('Z') or
+                ord('a') <= ord(c) <= ord('z') or
+                ord('0') <= ord(c) <= ord('9'))
         
         '''
         newStr = ""
@@ -34,9 +37,9 @@ class Solution:
         """single pass"""
         """
         i = 0
-        j = length - 1
+        j = len(s) - 1
         
-        while (i<j and i<len(s) and j>=0) :
+        while (i<j) :
             if not s[i].isalnum():
                 i += 1
                 continue
