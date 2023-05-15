@@ -1,5 +1,25 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        
+        maxProfitVal = 0
+        
+        n = len(prices)
+        
+        if(n<2):
+            return 0
+        
+        l, r = 0, 1
+        
+        while(r<n):
+            profit = prices[r] - prices[l]          
+            if profit>0 :
+                maxProfitVal = max(maxProfitVal, profit)
+            else:
+                l = r
+            r += 1
+        
+        return maxProfitVal
+        '''
         n = len(prices)
         maxProfitVal = 0
         maxPrices = [0]*n
@@ -14,4 +34,4 @@ class Solution:
             maxProfitVal = max(maxPrices[i]-prices[i], maxProfitVal)
         
         return maxProfitVal
-        
+        '''
