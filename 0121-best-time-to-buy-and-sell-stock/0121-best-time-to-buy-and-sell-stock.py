@@ -1,16 +1,9 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        
         maxProfitVal = 0
-        
-        n = len(prices)
-        
-        if(n<2):
-            return 0
-        
         l, r = 0, 1
         
-        while(r<n):
+        while(r<len(prices)):
             profit = prices[r] - prices[l]          
             if profit>0 :
                 maxProfitVal = max(maxProfitVal, profit)
@@ -19,6 +12,7 @@ class Solution:
             r += 1
         
         return maxProfitVal
+    
         '''
         n = len(prices)
         maxProfitVal = 0
