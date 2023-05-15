@@ -8,7 +8,7 @@ class Solution:
                 subSet.remove(s[l])
                 l += 1
             subSet.add(s[r])
-            maxLength = max(maxLength, len(subSet))
+            maxLength = max(maxLength, r-l+1)
             r += 1
         
         return maxLength
