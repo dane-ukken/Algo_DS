@@ -18,8 +18,7 @@ class Solution:
             return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
 
         
-        isSame = isSameTree(root, subRoot)
-        isSameLeft = self.isSubtree(root.left, subRoot)
-        isSameRight = self.isSubtree(root.right, subRoot)
+        return (isSameTree(root, subRoot)
+        or self.isSubtree(root.left, subRoot)
+        or self.isSubtree(root.right, subRoot))
         
-        return isSame or isSameLeft or isSameRight
