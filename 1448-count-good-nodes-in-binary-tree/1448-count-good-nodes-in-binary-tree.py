@@ -9,7 +9,6 @@ class Solution:
         res = [0]        
         if not root:
             return res
-        
         self.countGoodNodes(root, root.val, res)
         return res[0]
         
