@@ -16,8 +16,8 @@ class Solution:
         if not root:
             return True
         if minVal < root.val < maxVal:
-            isLeftValid = self.isValidSubBST(root.left, minVal, min(root.val, maxVal))
-            isRightValid = self.isValidSubBST(root.right, max(minVal, root.val), maxVal)
+            isLeftValid = self.isValidSubBST(root.left, minVal, root.val)
+            isRightValid = self.isValidSubBST(root.right, root.val, maxVal)
             return isLeftValid and isRightValid
         else:
             return False
