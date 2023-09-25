@@ -18,15 +18,15 @@ class Solution:
             levelLength = len(q)
             for i in range(levelLength):
                 node = q.popleft()
-                rightSideNode = None
+                rightSideNodeVal = None
                 if node:
-                    rightSideNode = node
+                    rightSideNodeVal = node.val
                     if node.left:
                         q.append(node.left)
                     if node.right:
                         q.append(node.right)
 
-            resultList.append(rightSideNode.val)
+            resultList.append(rightSideNodeVal)
         
         return resultList
                 
