@@ -12,15 +12,7 @@ class Solution:
                 if q.val >= root.val:
                     return root
                 return self.lowestCommonAncestor(root.left, p, q)
-            else:
-                return self.lowestCommonAncestor(root.right, p, q)
-        else: #    q < p
-            if q.val <= root.val:
-                if p.val >= root.val:
-                    return root
-                else:
-                    return self.lowestCommonAncestor(root.left, p, q)
-            else:
-                return self.lowestCommonAncestor(root.right, p, q)
-            
+            return self.lowestCommonAncestor(root.right, p, q)
+        
+        return self.lowestCommonAncestor(root, q, p)
             
