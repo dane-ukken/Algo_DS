@@ -2,6 +2,51 @@ class Solution:
     def colorBorder(self, grid: List[List[int]], row: int, col: int, color: int) -> List[List[int]]:
         m, n = len(grid), len(grid[0])
         initialColor = grid[row][col]
+        visitedColors = [initialColor, 0, -1]
+        
+        def dfs(i, j):
+            nonlocal initialColor
+            if grid[i][j] != initialColor:
+                return
+            
+            isBorderDeterminant = 4
+            grid[i][j] = 0
+            if i>0:
+                if grid[i-1][j] in visitedColors:
+                    isBorderDeterminant -= 1
+                dfs(i-1, j)
+            if i<m-1:
+                if grid[i+1][j] in visitedColors:
+                    isBorderDeterminant -= 1
+                dfs(i+1, j)
+            if j>0:
+                if grid[i][j-1] in visitedColors:
+                    isBorderDeterminant -= 1
+                dfs(i, j-1)
+            if j<n-1:
+                if grid[i][j+1] in visitedColors:
+                    isBorderDeterminant -= 1
+                dfs(i, j+1)
+            if isBorderDeterminant>0:
+                grid[i][j] = 0
+            else:
+                grid[i][j] = -1
+        
+        
+        dfs(row, col)
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 0:
+                    grid[i][j] = color
+                elif grid[i][j] == -1:
+                    grid[i][j] = initialColor
+        return grid
+    
+    """
+    class Solution:
+    def colorBorder(self, grid: List[List[int]], row: int, col: int, color: int) -> List[List[int]]:
+        m, n = len(grid), len(grid[0])
+        initialColor = grid[row][col]
         visited = set()
         
         def dfs(i, j):
@@ -21,3 +66,4 @@ class Solution:
         
         dfs(row, col)
         return grid
+    """
