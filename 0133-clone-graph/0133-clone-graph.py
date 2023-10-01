@@ -14,7 +14,7 @@ class Solution:
             return
         
         def dfs_copy_node(curr):
-            if curr and curr.val in nodeDict:
+            if curr.val in nodeDict:
                 return
             
             cloneNode = Node(curr.val)
