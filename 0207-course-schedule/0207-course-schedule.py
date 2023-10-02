@@ -16,8 +16,7 @@ class Solution:
                 if not dfs(preReq):
                     return False
                 preReqMap[course].remove(preReq)
-            visitSet.remove(course)    
-            #preReqMap[course] = []
+            visitSet.remove(course)
             return True
             
         for i in range(numCourses):
