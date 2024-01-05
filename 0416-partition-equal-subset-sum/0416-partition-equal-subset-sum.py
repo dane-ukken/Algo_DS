@@ -17,5 +17,5 @@ class Solution:
                 tempSet.add(s+num)
             possSums = tempSet
         
-        return True if target in possSums else False
+        return False
         
