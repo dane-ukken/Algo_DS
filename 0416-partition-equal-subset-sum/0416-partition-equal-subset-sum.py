@@ -11,6 +11,8 @@ class Solution:
         for num in nums:
             tempSet = set()
             for s in possSums:
+                if s+num == target:
+                    return True
                 tempSet.add(s)
                 tempSet.add(s+num)
             possSums = tempSet
