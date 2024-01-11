@@ -10,11 +10,11 @@ class Solution:
             
             cooldown = dfs(i+1, isBuying)
             if isBuying:
-                buy = dfs(i+1, False) - prices[i]
-                dp[(i, isBuying)] = max(buy, cooldown)
+                profitChange = dfs(i+1, False) - prices[i]
             else:
-                sell = dfs(i+2, True) + prices[i]
-                dp[(i, isBuying)] = max(sell, cooldown)
+                profitChange = dfs(i+2, True) + prices[i]
+            
+            dp[(i, isBuying)] = max(profitChange, cooldown)
             return dp[(i, isBuying)]
         
         return dfs(0, True)
