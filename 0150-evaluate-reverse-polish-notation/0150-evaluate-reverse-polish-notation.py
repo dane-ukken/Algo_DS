@@ -19,4 +19,4 @@ class Solution:
             st.append(res)
                 
         return int(st[0])
-            
+    
