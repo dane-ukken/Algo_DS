@@ -1,13 +1,16 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        anaDict = dict()
+        anaDict = defaultdict(list)
         
         for s in strs:
-            t = ''.join(sorted(s))
-            if t not in anaDict:
-                anaDict[t] = []
-            anaDict[t].append(s)
+            charCount = [0] * 26
+            
+            for c in s:
+                charCount[ord(c) - ord("a")] += 1
+            
+            anaDict[tuple(charCount)].append(s)     
         
         return anaDict.values()
+        
             
         
