@@ -1,24 +1,38 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         #operators = ['+', '-', '*', '/']
-        stack = []
-        operators = set(['+', '-', '*', '/'])
-
-        for token in tokens:
-            if token not in operators:
-                stack.append(int(token))
+        st = []
+        for c in tokens:
+            if c == '+':
+                b, a = int(st.pop()), int(st.pop())
+                st.append(a + b)
+            elif c == '-':
+                b, a = int(st.pop()), int(st.pop())
+                st.append(a - b)
+            elif c == '*':
+                b, a = int(st.pop()), int(st.pop())
+                st.append(a * b)
+            elif c == '/':
+                b, a = int(st.pop()), int(st.pop())
+                st.append(int(a / b))
             else:
-                # Pop the last two numbers from the stack
-                b, a = stack.pop(), stack.pop()
-                if token == '+':
-                    stack.append(a + b)
-                elif token == '-':
-                    stack.append(a - b)
-                elif token == '*':
-                    stack.append(a * b)
-                elif token == '/':
-                    # Use int() for division to truncate towards zero
-                    stack.append(int(a / b))
-        
-        return stack[0]
+                st.append(c)
+            '''
+            if c not in operators:
+                st.append(c)
+                continue
+            res = nan
+            b, a = int(st.pop()), int(st.pop())
+            if c == '+':
+                res = a + b
+            elif c == '-':
+                res = a - b
+            elif c == '*':
+                res = a * b
+            elif c == '/':
+                res = a // b
+            st.append(res)
+            '''
+                
+        return int(st[0])
             
