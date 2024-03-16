@@ -7,15 +7,11 @@ class Solution:
             curr = (i, h)
             while stack and stack[-1][1] >= h:
                 curr = stack.pop()
-                currArea = (i - curr[0])*curr[1]
-                if currArea > maxArea:
-                    maxArea = currArea
+                maxArea = max((i - curr[0])*curr[1], maxArea)
             stack.append((curr[0], h))
         
         while stack:
             curr = stack.pop()
-            currArea = (len(heights) - curr[0])*curr[1]
-            if currArea > maxArea:
-                    maxArea = currArea
+            maxArea = max((len(heights) - curr[0])*curr[1], maxArea)
         
         return maxArea
