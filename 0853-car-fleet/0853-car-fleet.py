@@ -4,9 +4,9 @@ class Solution:
         position = [(p, (target-p)/s) for p, s in zip(position,speed)]      
         position.sort()
         while position:
-            currTime = (position.pop())[1]
+            currTime = position.pop()[1]
             res += 1
-            while position and currTime >= (position[-1])[1]:
+            while position and currTime >= position[-1][1]:
                 position.pop()
         return res
         '''
