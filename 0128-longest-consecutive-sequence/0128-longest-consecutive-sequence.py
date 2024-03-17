@@ -7,8 +7,7 @@ class Solution:
             if num-1 in numSet:
                 continue
             curr = 0
-            while num in numSet:
-                num += 1
+            while num + curr in numSet:
                 curr += 1
             res = max(curr, res)
          
