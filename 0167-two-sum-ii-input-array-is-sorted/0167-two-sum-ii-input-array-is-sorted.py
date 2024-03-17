@@ -4,9 +4,10 @@ class Solution:
         l, r = 0, n-1
         
         while l < r:
-            if numbers[l] + numbers[r] == target:
+            curr = numbers[l] + numbers[r]
+            if curr == target:
                 return [l+1, r+1]
-            if numbers[l] + numbers[r] > target:
+            if curr > target:
                 r -= 1
             else:
                 l += 1
