@@ -1,7 +1,7 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        l, r = 0, len(nums) - 1
-        res = -1
+        n = len(nums)
+        l, r = 0, n - 1
         ind = 0
         while l <= r:
             if nums[l] <= nums[r]:
@@ -17,7 +17,6 @@ class Solution:
                 r = m - 1
         
         def findNum(l, r):
-            #nonlocal target
             while l <= r:
                 mid = (l+r)//2
                 if nums[mid] == target:
@@ -29,11 +28,10 @@ class Solution:
             return -1
         
         if target >= nums[0]:
-            res = findNum(0, (len(nums) + ind-1) % len(nums) )
+            return findNum(0, (n + ind-1) % n )
         else:
-            res = findNum(ind, len(nums) - 1)
+            return findNum(ind, n - 1)
     
-        return res
         
         
         
