@@ -28,11 +28,11 @@ class Solution:
                     l = mid + 1
             return -1
         
-            
-        res = findNum(0, ind-1)
-        if res == -1:
+        if target >= nums[0]:
+            res = findNum(0, (len(nums) + ind-1) % len(nums) )
+        else:
             res = findNum(ind, len(nums) - 1)
-        
+    
         return res
         
         
