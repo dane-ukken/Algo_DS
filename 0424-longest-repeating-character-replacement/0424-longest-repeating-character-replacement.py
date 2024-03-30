@@ -6,7 +6,6 @@ class Solution:
         
         l, r = 0, 0
         while r < len(s):
-            #print(l, r, res, maxF, countDict)
             countDict[s[r]] += 1
             maxF = max(maxF, countDict[s[r]])
             
