@@ -3,24 +3,19 @@
 WITH SalaryRanking AS
 (
     SELECT
-        salary,
-        departmentId, 
+        d.name as Department,
+        e.name as Employee,
+        e.salary as Salary,
         DENSE_RANK() OVER (PARTITION BY departmentId ORDER BY salary DESC) AS rank
     FROM
-        Employee
+        Employee e
+        JOIN Department d ON e.departmentId = d.id
 )
 SELECT
-    d.name as Department,
-    e.name as Employee,
-    e.salary as Salary
+    Department, Employee, Salary
  FROM
-    Employee e
-    JOIN Department d ON e.departmentId = d.id
-    JOIN SalaryRanking sr ON sr.departmentId = d.id and sr.salary = e.salary
-WHERE  
-    sr.rank <=3
-GROUP BY
-    d.name, e.name, e.salary
+    SalaryRanking
+WHERE rank <=3
 
 /*
 SELECT
