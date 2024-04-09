@@ -9,34 +9,17 @@ class Solution:
         traverse = head
         carry = 0
         
-        while(l1 and l2):
-            traverse.next = ListNode()
-            traverse = traverse.next
-            curr = l1.val + l2.val + carry
-            traverse.val = curr % 10
-            carry = curr // 10
-            l1 = l1.next
-            l2 = l2.next
-        
-        while(l1):
-            traverse.next = ListNode()
-            traverse = traverse.next
-            curr = l1.val + carry
-            traverse.val = curr % 10
-            carry = curr // 10
-            l1 = l1.next
+        while(l1 or l2 or carry):
+            l1Val = l1.val if l1 else 0
+            l2Val = l2.val if l2 else 0
+            curr = l1Val + l2Val + carry
             
-        while(l2):
             traverse.next = ListNode()
             traverse = traverse.next
-            curr = l2.val + carry
             traverse.val = curr % 10
+            
             carry = curr // 10
-            l2 = l2.next
-        
-        if carry:
-            traverse.next = ListNode()
-            traverse = traverse.next
-            traverse.val = 1
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
             
         return head.next
