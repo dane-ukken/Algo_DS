@@ -1,28 +1,17 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        winLen = len(s1)
-        res = False
-        if len(s2) < winLen:
-            return res
-        charCount = defaultdict(int)
-        for c in s1:
-            charCount[c] += 1
-        l, r = 0, 0
-        charDict = defaultdict(int)
-        while r < len(s2):
-            if s2[r] not in charCount:
-                l, r = r+1, r+1
-                charDict = defaultdict(lambda: 0)
-                continue
-            charDict[s2[r]] += 1
-            if r - l + 1 == winLen:
-                flag = True
-                for key in charCount.keys():
-                    if charCount[key] != charDict[key]:
-                        flag = False
-                if flag:
-                    return True
-                charDict[s2[l]] -= 1
-                l += 1
-            r += 1
-        return res
+        ctr1 = collections.defaultdict(int)
+        ctr2 = collections.defaultdict(int)
+        for x in s1: ctr1[x] += 1
+        for x in s2[:len(s1)]: ctr2[x] += 1
+            
+        i = 0; j = len(s1)
+        
+        while j < len(s2):
+            if ctr2 == ctr1: return True
+            ctr2[s2[i]] -= 1
+            if ctr2[s2[i]] < 1: ctr2.pop(s2[i]); 
+            ctr2[s2[j]] = ctr2.get(s2[j], 0) + 1
+            i += 1; j += 1
+            
+        return ctr2 == ctr1
