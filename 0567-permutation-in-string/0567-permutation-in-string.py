@@ -4,10 +4,7 @@ class Solution:
         res = False
         if len(s2) < winLen:
             return res
-        
         charCount = Counter(s1)
-        #print(charCount)
-        
         l, r = 0, 0
         charDict = defaultdict(lambda: 0)
         while r < len(s2):
@@ -15,11 +12,7 @@ class Solution:
                 l, r = r+1, r+1
                 charDict = defaultdict(lambda: 0)
                 continue
-            
-            #if r - l + 1 <= winLen:
             charDict[s2[r]] += 1
-                
-            #print(r, l, charDict)
             if r - l + 1 == winLen:
                 flag = True
                 for key in charCount.keys():
@@ -30,8 +23,4 @@ class Solution:
                 charDict[s2[l]] -= 1
                 l += 1
             r += 1
-                                
-            
-            
-        
         return res
