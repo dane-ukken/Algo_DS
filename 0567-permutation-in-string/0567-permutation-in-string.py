@@ -4,11 +4,11 @@ class Solution:
         res = False
         if len(s2) < winLen:
             return res
-        charCount = defaultdict(lambda: 0)
+        charCount = defaultdict(int)
         for c in s1:
             charCount[c] += 1
         l, r = 0, 0
-        charDict = defaultdict(lambda: 0)
+        charDict = defaultdict(int)
         while r < len(s2):
             if s2[r] not in charCount:
                 l, r = r+1, r+1
