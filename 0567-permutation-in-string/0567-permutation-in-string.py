@@ -1,26 +1,17 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        winLen = len(s1)
-        res = False
-        if len(s2) < winLen:
-            return res
-        charCount = Counter(s1)
-        l, r = 0, 0
-        charDict = defaultdict(lambda: 0)
-        while r < len(s2):
-            if s2[r] not in charCount:
-                l, r = r+1, r+1
-                charDict = defaultdict(lambda: 0)
-                continue
-            charDict[s2[r]] += 1
-            if r - l + 1 == winLen:
-                flag = True
-                for key in charCount.keys():
-                    if charCount[key] != charDict[key]:
-                        flag = False
-                if flag:
-                    return True
-                charDict[s2[l]] -= 1
-                l += 1
-            r += 1
-        return res
+        A = [ord(x) - ord('a') for x in s1]
+        B = [ord(x) - ord('a') for x in s2]
+
+        target = [0] * 26
+        for x in A:
+            target[x] += 1
+
+        window = [0] * 26
+        for i, x in enumerate(B):
+            window[x] += 1
+            if i >= len(A):
+                window[B[i - len(A)]] -= 1
+            if window == target:
+                return True
+        return False
