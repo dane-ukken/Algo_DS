@@ -5,39 +5,28 @@
 #         self.next = next
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
-        count = 1
-        prev = None
-        res = head
-        lNext, rNext = head, None
-        temp = None
-        
-        if left == right:
+        if not head or left == right:
             return head
         
-        while head and count <= right:
-            if count == left:
-                lNext = prev
-                l = head
-            if count == right:
-                rNext = head
-                
-            temp = head.next
-            if count <= right and count >= left:
-                head.next = prev
-            prev = head
-            head = temp
-            count += 1
+        # Create a dummy node to handle edge cases easily
+        dummy = ListNode(0)
+        dummy.next = head
+        prev = dummy
         
-
-        if lNext:
-            temp = lNext.next
-            lNext.next = prev
-            temp.next = head
-        else:
-            res = rNext
-            l.next = head
+        # Move `prev` to the node just before the reversal starts
+        for _ in range(left - 1):
+            prev = prev.next
         
+        # `start` will point to the first node of the segment to be reversed
+        start = prev.next
+        # `then` will point to the node that will be reversed
+        then = start.next
         
+        # Reverse the sublist
+        for _ in range(right - left):
+            start.next = then.next
+            then.next = prev.next
+            prev.next = then
+            then = start.next
         
-        return res
-        
+        return dummy.next
