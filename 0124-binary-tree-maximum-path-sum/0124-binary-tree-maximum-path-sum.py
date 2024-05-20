@@ -14,7 +14,7 @@ class Solution:
             val = node.val
             left = dfs(node.left)
             leftTrue = left[0]
-            leftFalse = dfs(node.left)[1]
+            leftFalse = left[1]
  
             right = dfs(node.right)
             rightTrue = right[0]
