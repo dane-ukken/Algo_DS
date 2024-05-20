@@ -6,12 +6,11 @@
 #         self.right = right
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        visited = {}
+
         def dfs(node):
             if not node:
                 return [float(-inf), float(-inf)]
-            if node in visited:
-                return visited[node]
+
             val = node.val
             left = dfs(node.left)
             leftTrue = left[0]
@@ -24,7 +23,6 @@ class Solution:
             maxTrue = max(val, val+rightTrue, val+leftTrue)
             maxFalse = max(rightFalse, leftFalse, leftTrue, rightTrue, val+leftTrue+rightTrue)
             
-            visited[node] = [maxTrue, maxFalse]
             return [maxTrue, maxFalse]
             
         res = dfs(root)
