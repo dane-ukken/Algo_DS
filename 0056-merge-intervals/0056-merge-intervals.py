@@ -7,8 +7,7 @@ class Solution:
             if intervals[i][1] < intervals[i+1][0]:
                 res.append(intervals[i])
             else:
-                intervals[i+1][0] = min(intervals[i+1][0], intervals[i][0])
-                intervals[i+1][1] = max(intervals[i+1][1], intervals[i][1])
+                intervals[i+1] = [min(intervals[i+1][0], intervals[i][0]), max(intervals[i+1][1], intervals[i][1])]
         
         res.append(intervals[-1])
 
