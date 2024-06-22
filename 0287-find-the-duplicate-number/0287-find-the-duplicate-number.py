@@ -1,9 +1,8 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        visited = set()
         
-        for num in nums:
-            if num in visited:
-                return num
-            visited.add(num)
-        
+        while nums[0] != nums[nums[0]]:
+            #ums[0], nums[nums[0]] = nums[nums[0]], nums[0]
+            nums[nums[0]], nums[0] = nums[0], nums[nums[0]]
+
+        return nums[0]
