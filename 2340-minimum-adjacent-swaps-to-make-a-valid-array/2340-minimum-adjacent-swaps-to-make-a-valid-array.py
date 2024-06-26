@@ -5,15 +5,11 @@ class Solution:
         minIndex, maxIndex = -1, 0
         
         for i in range(len(nums)):
-            if nums[i] == minEle:
+            if minIndex == -1 and nums[i] == minEle:
                 minIndex = i
-                break
-        
-        for i in range(len(nums) - 1, -1, -1):
             if nums[i] == maxEle:
                 maxIndex = i
-                break
-                
+
         res = minIndex + (len(nums)-1-maxIndex)
         
         if minIndex > maxIndex:
