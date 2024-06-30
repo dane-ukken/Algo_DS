@@ -11,7 +11,7 @@ class Solution:
             if node in visited:
                 return
             cycle.add(node)
-            
+            print('O')
             for des in graph[node]:
                 dfs(des)
             
