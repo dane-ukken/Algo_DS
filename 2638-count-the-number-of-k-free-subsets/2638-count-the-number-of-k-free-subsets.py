@@ -1,10 +1,10 @@
 class Solution:
     def countTheNumOfKFreeSubsets(self, nums: List[int], k: int) -> int:
         nums.sort()
-        group_sizes = {}
+        group_sizes = defaultdict(lambda: 0)
 
         for num in nums:
-            curr = group_sizes.get(num - k, 0)
+            curr = group_sizes[num - k]
             group_sizes.pop(num - k, None)
             group_sizes[num] = curr + 1
         
