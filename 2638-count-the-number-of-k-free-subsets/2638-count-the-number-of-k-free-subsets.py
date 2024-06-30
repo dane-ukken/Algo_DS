@@ -5,7 +5,8 @@ class Solution:
 
         for num in nums:
             curr = group_sizes[num - k]
-            group_sizes.pop(num - k, None)
+            if num - k in group_sizes:
+                group_sizes.pop(num - k)
             group_sizes[num] = curr + 1
         
         def fib(x):
