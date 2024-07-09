@@ -1,6 +1,6 @@
 class Solution:
     def minSwaps(self, data: List[int]) -> int:
-        res = float('inf')
+        res = inf
         #find the number of ones
         numCounts = Counter(data)
         windowSize = numCounts[1]
