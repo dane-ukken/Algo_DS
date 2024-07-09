@@ -13,11 +13,9 @@ class Solution:
         oneCount = Counter(data[:r])[1]
         
         while r < len(data):
-            if data[r] == 1:
-                oneCount += 1
+            oneCount += data[r]
             res = min(res, windowSize - oneCount)
-            if data[l] == 1:
-                oneCount -= 1
+            oneCount -= data[l]
             
             l += 1
             r += 1
