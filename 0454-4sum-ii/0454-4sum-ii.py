@@ -1,13 +1,14 @@
 class Solution:
-    def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
-        cnt = 0
-        m = collections.defaultdict(int)
-        for a in A:
-            for b in B:
-                m[a + b] += 1
-                
-        for c in C:
-            for d in D:
-                cnt += m[-(c + d)]
-                
-        return cnt
+    def fourSumCount(self, nums1: List[int], nums2: List[int], nums3: List[int], nums4: List[int]) -> int:
+        tarSet = defaultdict(lambda: 0)
+        res = 0
+        
+        for n4 in nums4:
+            for n3 in nums3:
+                tarSet[-n4-n3] += 1
+            
+        for n1 in nums1:
+            for n2 in nums2:
+                res += tarSet[n1+n2]
+        
+        return res
