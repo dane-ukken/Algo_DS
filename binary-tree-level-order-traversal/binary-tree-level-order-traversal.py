@@ -24,7 +24,7 @@ class Solution(object):
                     q.append(curr.left)
                 if curr.right:
                     q.append(curr.right)
-            res.append(currList[:])
+            res.append(currList)
                 
             
             
