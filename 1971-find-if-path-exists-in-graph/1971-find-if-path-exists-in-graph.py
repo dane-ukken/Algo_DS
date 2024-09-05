@@ -21,7 +21,8 @@ class Solution:
             neighbors = edgeDict[node]
             
             for neighbor in neighbors:
-                dfs(neighbor)
+                if neighbor not in visited:
+                    dfs(neighbor)
         
         dfs(source)
         return res
