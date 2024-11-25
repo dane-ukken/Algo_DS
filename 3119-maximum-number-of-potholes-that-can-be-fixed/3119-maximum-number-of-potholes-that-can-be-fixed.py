@@ -2,7 +2,6 @@ class Solution:
     def maxPotholes(self, road: str, budget: int) -> int:
 
         maxHeap = []
-        print(maxHeap)
         res = 0
         currCount = 0
         for c in road:
@@ -17,8 +16,8 @@ class Solution:
         while maxHeap and budget > 0:
             curr = -heapq.heappop(maxHeap)
             if budget > curr:
-                res += curr - 1
                 budget -= curr
+                res += curr - 1
             else:
                 res += budget - 1
                 budget = 0
