@@ -6,7 +6,7 @@ class Solution:
 
         while r < len(fruits):
             fruitDict[fruits[r]] = r
-            while len(fruitDict.keys()) > 2:
+            while len(fruitDict) > 2:
                 curr = fruits[l]
                 if fruitDict[curr] == l:
                     fruitDict.pop(curr)
