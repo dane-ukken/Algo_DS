@@ -6,6 +6,7 @@ class Codec:
         for s in strs:
             count = len(s)
             curr = []
+            # abc is the length of the string
             
             c = count%10
             count = count // 10
