@@ -1,8 +1,6 @@
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
         res = []
-        if len(s) > 12:
-            return []
 
         def backtrack(curr, remS):
             nonlocal res
@@ -22,7 +20,6 @@ class Solution:
                     curr.append(newS)
                     backtrack(curr, newRemS)
                     curr.pop()
-            
-            
+              
         backtrack([], s)
         return res
