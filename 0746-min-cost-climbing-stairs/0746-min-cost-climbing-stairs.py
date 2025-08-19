@@ -4,8 +4,6 @@ class Solution:
         cost.append(0)
 
         for i in range(2, len(cost)):
-            temp = cost[i] + min(first, second)
-            first = second
-            second = temp  
+            first, second = second, cost[i] + min(first, second)
 
         return second
