@@ -22,13 +22,15 @@ class Solution:
         """
         res = 0
         curr = 4
-        while n > 0 and curr > 0:
+        while res < n and curr == 4:
             buf4 = [' '] * 4
             curr = read4(buf4)
-            for i in range(min(curr, n)):
+            for i in range(curr):
                 buf[res] = buf4[i]
                 res += 1
-            n -= curr
+                if res == n:
+                    break
+            
 
         return res
         
