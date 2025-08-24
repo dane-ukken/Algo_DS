@@ -26,8 +26,8 @@ class Solution:
             buf4 = [' '] * 4
             curr = read4(buf4)
             for i in range(min(curr, n)):
-                buf[res + i] = buf4[i]
-            res += min(curr, n)
+                buf[res] = buf4[i]
+                res += 1
             n -= curr
 
         return res
