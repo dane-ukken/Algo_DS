@@ -6,32 +6,14 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        res = True
-        if not root:
-            return True
-        return self.isValidSubBST(root, float('-inf'), float('inf'))
+        def checkBST(node, minLimit, maxLimit):
+            if not node:
+                return True
             
-    
-    def isValidSubBST(self, root, minVal, maxVal):
-        if not root:
-            return True
-        if minVal < root.val < maxVal:
-            isLeftValid = self.isValidSubBST(root.left, minVal, root.val)
-            isRightValid = self.isValidSubBST(root.right, root.val, maxVal)
-            return isLeftValid and isRightValid
-        else:
-            return False
-     
-        #add min and max in the subTree
+            if not minLimit < node.val < maxLimit:
+                return False
+            
+            return checkBST(node.left, minLimit, min(node.val, maxLimit)) and checkBST(node.right, max(node.val, minLimit), maxLimit)
+
         
-        """
-        if root.left and root.val <= root.left.val:
-            res = False
-        if root.right and root.val >= root.right.val:
-            res = False
-        
-        isLeftValid = self.isValidBST(root.left)
-        isRightValid = self.isValidBST(root.right)      
-        
-        return res and isLeftValid and isRightValid
-        """
+        return checkBST(root, float('-inf'), float('inf'))
