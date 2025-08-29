@@ -14,7 +14,7 @@ class Solution:
             if node in visited:
                 continue
             visited.add(node)
-            res = max(res, currTime)
+            res = currTime
             for neighbor, distance in neighborDict[node]:
                 newTime = currTime + distance
                 if neighbor not in visited:
