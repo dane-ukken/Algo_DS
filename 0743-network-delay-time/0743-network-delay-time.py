@@ -17,7 +17,6 @@ class Solution:
             res = max(res, currTime)
             for neighbor, distance in neighborDict[node]:
                 newTime = currTime + distance
-                if neighbor not in visited:
-                    heapq.heappush(minHeap, (newTime, neighbor))
+                heapq.heappush(minHeap, (newTime, neighbor))
 
         return res if len(visited) == n else -1
