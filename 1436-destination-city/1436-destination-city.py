@@ -1,6 +1,5 @@
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
-        visited = set()
         neighborDict = defaultdict(list)
         for s, d in paths:
             neighborDict[s].append(d)
