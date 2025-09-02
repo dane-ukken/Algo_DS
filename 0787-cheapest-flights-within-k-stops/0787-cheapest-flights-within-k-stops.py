@@ -12,7 +12,7 @@ class Solution:
             l = len(minHeap)
             for i in range(l):
                 p, stops, node = heapq.heappop(minHeap)
-                print(p, stops, node)
+                #print(p, stops, node)
                 if visited[node] > 2*k:
                     continue
                 visited[node] += 1
