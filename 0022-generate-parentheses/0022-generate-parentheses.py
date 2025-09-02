@@ -3,7 +3,7 @@ class Solution:
         res = []
 
         def backtrack(curr, o, close):
-            if len(curr) >= 2 * n:
+            if len(curr) == 2*n:
                 if o == n and close == n:
                     res.append(''.join(curr))
                 return
