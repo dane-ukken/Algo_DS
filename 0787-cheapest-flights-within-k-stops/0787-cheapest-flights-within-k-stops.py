@@ -11,6 +11,8 @@ class Solution:
         while minHeap:
             p, stops, node = heapq.heappop(minHeap)
                 #print(p, stops, node)
+            if stops > k:
+                continue
             if visited[node] > 2 * k:
                 continue
             visited[node] += 1
