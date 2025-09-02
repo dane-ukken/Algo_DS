@@ -9,21 +9,19 @@ class Solution:
 
         heapq.heappush(minHeap, (0, -1, src))
         while minHeap:
-            l = len(minHeap)
-            for i in range(l):
-                p, stops, node = heapq.heappop(minHeap)
+            p, stops, node = heapq.heappop(minHeap)
                 #print(p, stops, node)
-                if visited[node] > 2 * k:
+            if visited[node] > 2 * k:
+                continue
+            visited[node] += 1
+            if node == dst:
+                if stops > k:
+                    visited[node] = 0
                     continue
-                visited[node] += 1
-                if node == dst:
-                    if stops > k:
-                        visited[node] = 0
-                        continue
-                    else:
-                        return p
-                for dp, neighbor in neighborDict[node]:
-                    newPrice = p + dp
-                    heapq.heappush(minHeap, (newPrice, stops + 1, neighbor))
+                else:
+                    return p
+            for dp, neighbor in neighborDict[node]:
+                newPrice = p + dp
+                heapq.heappush(minHeap, (newPrice, stops + 1, neighbor))
         
         return -1        
