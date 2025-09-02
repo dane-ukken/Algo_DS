@@ -1,28 +1,40 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        preReqMap = dict()
-        for i in range(numCourses):
-            preReqMap[i] = []
-        for c, p in prerequisites:
-            preReqMap[c].append(p)
-        visitSet = set()
-        def dfs(course):
-            if course in visitSet:
-                return False
-            if preReqMap[course] == []:
-                return True
-            visitSet.add(course)
-            for preReq in preReqMap[course]:
-                if not dfs(preReq):
-                    return False
-                #preReqMap[course].remove(preReq)
-            visitSet.remove(course)
-            preReqMap[course] = []
-            return True
+        visited = set()
+        cycle = set()
+        prereqDict = defaultdict(set)
+        res = True
+
+        for s, d in prerequisites:
+            prereqDict[s].add(d)
+
+        def dfs(node):
+            nonlocal res
+
+            if not prereqDict[node]:
+                return
             
+            if node in cycle:
+                res = False
+                return 
+
+            if node in visited:
+                return
+            
+            cycle.add(node)
+            visited.add(node)
+            
+            for neighbor in prereqDict[node]:
+                dfs(neighbor)
+
+            cycle.remove(node)
+
+            
+
+
         for i in range(numCourses):
-            if not dfs(i):
-                return False
+            visited = set()
+            cycle = set()
+            dfs(i)
         
-        return True
-            
+        return res
