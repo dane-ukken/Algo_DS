@@ -13,7 +13,7 @@ class Solution:
             for i in range(l):
                 p, stops, node = heapq.heappop(minHeap)
                 #print(p, stops, node)
-                if visited[node] > 2*k:
+                if visited[node] > 2 * k:
                     continue
                 visited[node] += 1
                 if node == dst:
