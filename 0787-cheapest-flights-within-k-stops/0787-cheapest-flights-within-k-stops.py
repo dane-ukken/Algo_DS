@@ -17,11 +17,7 @@ class Solution:
                 continue
             visited[node] += 1
             if node == dst:
-                if stops > k:
-                    visited[node] = 0
-                    continue
-                else:
-                    return p
+                return p
             for dp, neighbor in neighborDict[node]:
                 newPrice = p + dp
                 heapq.heappush(minHeap, (newPrice, stops + 1, neighbor))
